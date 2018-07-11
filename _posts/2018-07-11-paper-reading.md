@@ -2,8 +2,8 @@
 layout: post
 title: "论文阅读笔记"
 category: 
-tags: []
-description: 
+tags: [paper]
+description: 开拓视野
 ---
 
 
