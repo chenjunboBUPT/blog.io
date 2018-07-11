@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>博客名字</title>
+    <description>这是我的博客</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 11 Jul 2018 18:29:38 +0800</pubDate>
+    <lastBuildDate>Wed, 11 Jul 2018 18:29:38 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>论文阅读笔记</title>
+        <description>&lt;h2 id=&quot;开篇&quot;&gt;开篇&lt;/h2&gt;
+
+&lt;p&gt;读论文对于学术训练有着至关重要的作用，因此我准备每天读一篇文章的introduction和summary来对深度学习的领域有所了解，再把心得记录在这片博文中。具体的文章就选用&lt;a href=&quot;https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap&quot;&gt;&lt;strong&gt;Deep-Learning-Papers-Reading-Roadmap&lt;/strong&gt;&lt;/a&gt;中推荐的文章。&lt;/p&gt;
+
+&lt;p&gt;have a try&lt;/p&gt;
+</description>
+        <pubDate>Wed, 11 Jul 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/11/paper-reading/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/11/paper-reading/</guid>
+        
+        <category>paper</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
