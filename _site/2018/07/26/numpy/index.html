@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="记录学习的日常~">
 
-    <title>访问虚拟机中的jupyter notebook - Piece of Mind</title>
+    <title>numpy库略读 - Piece of Mind</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/07/26/work-env/">
+    <link rel="canonical" href="http://localhost:4000/2018/07/26/numpy/">
 
     <!-- Icons -->
   <link rel="shortcut icon" href="img/favicon.ico">
@@ -103,10 +103,10 @@
                 <div class="post-heading">
                     <div class="Tags">
                         
-                        <a class="tag" href="/Tags/#env" title="env">env</a>
+                        <a class="tag" href="/Tags/#cheatsheet" title="cheatsheet">cheatsheet</a>
                         
                     </div>
-                    <h1>访问虚拟机中的jupyter notebook</h1>
+                    <h1>numpy库略读</h1>
                     
                     <span class="meta">Posted by 陈钧博 on July 26, 2018</span>
                 </div>
@@ -124,71 +124,146 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-container">
 
-                <h1 id="配置ssh连接虚拟机">配置ssh连接虚拟机</h1>
+                <h3 id="动机">动机</h3>
 
-<h3 id="确定虚拟机ubuntu的ip地址">确定虚拟机Ubuntu的IP地址</h3>
+<p>在学习机器学习的过程中，我发现很多库的基础语法，我都不了解。因此决定略读cheatsheet，对各个库都有一定了解。cheatsheet大部分来自<a href="https://www.datacamp.com/community/data-science-cheatsheets">DataCamp</a>。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifconfig #例如：查看 inet addr:192.168.0.129
+<h3 id="简介">简介</h3>
+
+<p>numpy是一个python科学计算的核心库，它提供了高性能的多维数组类型和处理这些高维数组的工具。</p>
+
+<h3 id="要点摘抄">要点摘抄</h3>
+
+<h4 id="导入">导入</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import numpy as np
 </code></pre></div></div>
 
-<h3 id="确定windows能否与虚拟机联通">确定windows能否与虚拟机联通</h3>
+<h4 id="创建数组">创建数组</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>windows下，cmd --&gt;:ping 192.168.0.128
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a = np.array([[(1.5,2,3),(4,5,6)],[(3,2,1),(4,5,6)]],dtype=float)
 </code></pre></div></div>
 
-<h3 id="安装ssh服务">安装ssh服务</h3>
+<h4 id="初始化元素">初始化元素</h4>
 
-<h4 id="查看ssh服务是否安装">查看ssh服务是否安装</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.zeros((3,4)) 		#用0初始化数组
+np.ones((2,3,4))		#用1初始化数组
+np.full((2,2),7)		#生成元素全为7的数组
+np.eye(2)		    	#生成单位矩阵
+np.random.random((2,2))	 #生成随机矩阵,注意有两个random
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh localhost
+np.arrange(10,25,5)		#生成10到25的数，步长为5
+np.linspace(0,2,9)		#9个数字均分0到2
 </code></pre></div></div>
 
-<h4 id="安装ssh服务-1">安装ssh服务</h4>
+<h4 id="了解数组特征">了解数组特征</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install openssh-server
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> a.ndim					#显示数组的维度
+ a.shape				#显示数组各维度的长度
+ len(a)					#显示数组长度（第一维）
+ a.size					#显示数组元素的个数
+ a.dtype				#显示数组元素的数据类型
+ a.astype(int)			 #将数组元素转化为另一种类型
 </code></pre></div></div>
 
-<h4 id="输入命令查看状态">输入命令查看状态</h4>
+<h4 id="数组的数学操作">数组的数学操作</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo service ssh status 
+<h5 id="算术操作">算术操作</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a.dot(b)				#矩阵乘法
 </code></pre></div></div>
 
-<h3 id="配置xshell通过ssh连接虚拟机">配置xshell,通过ssh连接虚拟机</h3>
+<p>除了上面一个函数，其他操作都是元素级的操作</p>
 
-<hr />
+<h5 id="数组比较">数组比较</h5>
 
-<h1 id="notebook端口映射">notebook端口映射</h1>
-
-<h3 id="通过anaconda安装notebook">通过anaconda安装notebook</h3>
-
-<h3 id="自动生成配置文件">自动生成配置文件</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook --generate-config
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a &lt; 2					#元素级比较，生成的一个shape与原数组相同的bool数组
+a == b  				#元素级比较，数组的shape必须相同，结果形式同上
+np.array_equal(a.b)		 #数组级比较，生成一个bool变量
 </code></pre></div></div>
 
-<h3 id="生成密码">生成密码</h3>
+<h5 id="聚合函数">聚合函数</h5>
 
-<p>在python中运行下面代码，会产生一串密钥</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from notebook.auth import passwd
-passwd()
-Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a.sum()					#所有元素求和
+a.min()					#求所有元素的最小值 ## axis=0 -&gt; 以列为单位 axis=1 -&gt; 以行为单位
+a.mean()				#求所有元素的均值
+a.mediana()				#求所有元素的中位数
+np.std(a)				#求数组的标准差
 </code></pre></div></div>
 
-<h3 id="修改配置文件">修改配置文件</h3>
+<h4 id="复制数组">复制数组</h4>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c.NotebookApp.ip='*'
-c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'  #注意引号前面的u
-c.NotebookApp.open_browser = False
-c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>b = a.copy() 			#b=a.view(),b=np.copy(a)的效果也一样
 </code></pre></div></div>
 
-<h3 id="通过xshell实现端口映射">通过xshell实现端口映射</h3>
+<h4 id="数组排序">数组排序</h4>
 
-<p>连接》SSH》隧道》添加TCP/IP转移规则
-源主机就填localhost，侦听端口就填宿主机中的端口，</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a.sort()				#排序数组，axis也是可选参数
+</code></pre></div></div>
 
-<p>目标主机和端口就填虚拟机的ip和notebook运行的端口</p>
+<h4 id="元素筛选">元素筛选</h4>
+
+<h5 id="取子集">取子集</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a[1,2]或a[1][2]			#从0开始计数，先行后列
+</code></pre></div></div>
+
+<h5 id="切片">切片</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>					    #python中的区间左闭右开，例如[2:5]就等于2,3,4
+a[::-1]					#反转数组中的元素
+					 	#其他的操作太trick了，需要时再看
+</code></pre></div></div>
+
+<h5 id="布尔索引">布尔索引</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a[a&lt;2]					#选出a中小于2的元素
+</code></pre></div></div>
+
+<h5 id="fancy-indexing">Fancy Indexing</h5>
+
+<p>看不懂</p>
+
+<h4 id="数组操作">数组操作</h4>
+
+<h5 id="转置数组">转置数组</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a.T						#也可以写成np.transpose(a)
+</code></pre></div></div>
+
+<h5 id="改变数组的形状">改变数组的形状</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a.ravel()				#将数组拉平
+a.reshape(3,-1)			 #有返回值，所谓有返回值，即不会对原始多维数组进行修改；
+						#改变数组形状,但是不改变数据,多余数据截断,缺少数据用0补齐
+a.resize((3,2))			 #无返回值，所谓无返回值，即会对原始多维数组进行修改；
+</code></pre></div></div>
+
+<h5 id="增加或减少元素">增加或减少元素</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.append(a,b)			 #将a拉平后，在尾部加上b
+np.insert(a,1,5)		 #在将位置1开始的元素整体后移，插入新元素5
+np.delete(a,[1])		 #删除位置1的元素
+</code></pre></div></div>
+
+<h5 id="拼接数组">拼接数组</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.concatenate((a,b),axis=0)	#要拼接的那个维度长度必须相同，例如axis=0，就是按行拼接，							  #列数必须相同
+#按一行行拼接
+np.vstack((a,b))
+np.r_[a,b]
+#按一列列拼接
+np.hstack((a,b))
+np.c_[a,b]
+np.column_stack((a,d))
+</code></pre></div></div>
+
+<h5 id="分割数组">分割数组</h5>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>np.hsplit(a,3)				#将a按列分为3个相同的子数组(horizontally == column-wise)
+np.vsplit(a,3)				#将a按行分为3个相同的子数组(vertically == row-wise)
+</code></pre></div></div>
+
 
 
                 <hr>
@@ -196,15 +271,19 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2018/07/26/numpy/" data-toggle="tooltip" data-placement="top" title="numpy库略读">&larr; Previous Post</a>
+                        <a href="/2018/07/24/agenda/" data-toggle="tooltip" data-placement="top" title="学习记录">&larr; Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2018/07/26/work-env/" data-toggle="tooltip" data-placement="top" title="访问虚拟机中的jupyter notebook">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
                 <!-- 多说评论框 start -->
                 <div class="comment">
-                    <div class="ds-thread" data-thread-key="/2018/07/26/work-env" data-title="访问虚拟机中的jupyter notebook" data-url="http://localhost:4000/2018/07/26/work-env/"></div>
+                    <div class="ds-thread" data-thread-key="/2018/07/26/numpy" data-title="numpy库略读" data-url="http://localhost:4000/2018/07/26/numpy/"></div>
                 </div>
                 <!-- 多说评论框 end -->
             </div>

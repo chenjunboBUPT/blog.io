@@ -5,8 +5,8 @@
     <description>记录学习的日常~</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 26 Jul 2018 15:24:12 +0800</pubDate>
-    <lastBuildDate>Thu, 26 Jul 2018 15:24:12 +0800</lastBuildDate>
+    <pubDate>Thu, 26 Jul 2018 22:09:18 +0800</pubDate>
+    <lastBuildDate>Thu, 26 Jul 2018 22:09:18 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
@@ -87,8 +87,160 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
       </item>
     
       <item>
+        <title>numpy库略读</title>
+        <description>&lt;h3 id=&quot;动机&quot;&gt;动机&lt;/h3&gt;
+
+&lt;p&gt;在学习机器学习的过程中，我发现很多库的基础语法，我都不了解。因此决定略读cheatsheet，对各个库都有一定了解。cheatsheet大部分来自&lt;a href=&quot;https://www.datacamp.com/community/data-science-cheatsheets&quot;&gt;DataCamp&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;简介&quot;&gt;简介&lt;/h3&gt;
+
+&lt;p&gt;numpy是一个python科学计算的核心库，它提供了高性能的多维数组类型和处理这些高维数组的工具。&lt;/p&gt;
+
+&lt;h3 id=&quot;要点摘抄&quot;&gt;要点摘抄&lt;/h3&gt;
+
+&lt;h4 id=&quot;导入&quot;&gt;导入&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import numpy as np
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;创建数组&quot;&gt;创建数组&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a = np.array([[(1.5,2,3),(4,5,6)],[(3,2,1),(4,5,6)]],dtype=float)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;初始化元素&quot;&gt;初始化元素&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.zeros((3,4)) 		#用0初始化数组
+np.ones((2,3,4))		#用1初始化数组
+np.full((2,2),7)		#生成元素全为7的数组
+np.eye(2)		    	#生成单位矩阵
+np.random.random((2,2))	 #生成随机矩阵,注意有两个random
+
+np.arrange(10,25,5)		#生成10到25的数，步长为5
+np.linspace(0,2,9)		#9个数字均分0到2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;了解数组特征&quot;&gt;了解数组特征&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; a.ndim					#显示数组的维度
+ a.shape				#显示数组各维度的长度
+ len(a)					#显示数组长度（第一维）
+ a.size					#显示数组元素的个数
+ a.dtype				#显示数组元素的数据类型
+ a.astype(int)			 #将数组元素转化为另一种类型
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;数组的数学操作&quot;&gt;数组的数学操作&lt;/h4&gt;
+
+&lt;h5 id=&quot;算术操作&quot;&gt;算术操作&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a.dot(b)				#矩阵乘法
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;除了上面一个函数，其他操作都是元素级的操作&lt;/p&gt;
+
+&lt;h5 id=&quot;数组比较&quot;&gt;数组比较&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a &amp;lt; 2					#元素级比较，生成的一个shape与原数组相同的bool数组
+a == b  				#元素级比较，数组的shape必须相同，结果形式同上
+np.array_equal(a.b)		 #数组级比较，生成一个bool变量
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;聚合函数&quot;&gt;聚合函数&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a.sum()					#所有元素求和
+a.min()					#求所有元素的最小值 ## axis=0 -&amp;gt; 以列为单位 axis=1 -&amp;gt; 以行为单位
+a.mean()				#求所有元素的均值
+a.mediana()				#求所有元素的中位数
+np.std(a)				#求数组的标准差
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;复制数组&quot;&gt;复制数组&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;b = a.copy() 			#b=a.view(),b=np.copy(a)的效果也一样
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;数组排序&quot;&gt;数组排序&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a.sort()				#排序数组，axis也是可选参数
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;元素筛选&quot;&gt;元素筛选&lt;/h4&gt;
+
+&lt;h5 id=&quot;取子集&quot;&gt;取子集&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a[1,2]或a[1][2]			#从0开始计数，先行后列
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;切片&quot;&gt;切片&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;					    #python中的区间左闭右开，例如[2:5]就等于2,3,4
+a[::-1]					#反转数组中的元素
+					 	#其他的操作太trick了，需要时再看
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;布尔索引&quot;&gt;布尔索引&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a[a&amp;lt;2]					#选出a中小于2的元素
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;fancy-indexing&quot;&gt;Fancy Indexing&lt;/h5&gt;
+
+&lt;p&gt;看不懂&lt;/p&gt;
+
+&lt;h4 id=&quot;数组操作&quot;&gt;数组操作&lt;/h4&gt;
+
+&lt;h5 id=&quot;转置数组&quot;&gt;转置数组&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a.T						#也可以写成np.transpose(a)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;改变数组的形状&quot;&gt;改变数组的形状&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a.ravel()				#将数组拉平
+a.reshape(3,-1)			 #有返回值，所谓有返回值，即不会对原始多维数组进行修改；
+						#改变数组形状,但是不改变数据,多余数据截断,缺少数据用0补齐
+a.resize((3,2))			 #无返回值，所谓无返回值，即会对原始多维数组进行修改；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;增加或减少元素&quot;&gt;增加或减少元素&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.append(a,b)			 #将a拉平后，在尾部加上b
+np.insert(a,1,5)		 #在将位置1开始的元素整体后移，插入新元素5
+np.delete(a,[1])		 #删除位置1的元素
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;拼接数组&quot;&gt;拼接数组&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.concatenate((a,b),axis=0)	#要拼接的那个维度长度必须相同，例如axis=0，就是按行拼接，							  #列数必须相同
+#按一行行拼接
+np.vstack((a,b))
+np.r_[a,b]
+#按一列列拼接
+np.hstack((a,b))
+np.c_[a,b]
+np.column_stack((a,d))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;分割数组&quot;&gt;分割数组&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.hsplit(a,3)				#将a按列分为3个相同的子数组(horizontally == column-wise)
+np.vsplit(a,3)				#将a按行分为3个相同的子数组(vertically == row-wise)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Thu, 26 Jul 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/26/numpy/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/26/numpy/</guid>
+        
+        <category>cheatsheet</category>
+        
+        
+      </item>
+    
+      <item>
         <title>学习记录</title>
-        <description>&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+        <description>&lt;h1 id=&quot;动机&quot;&gt;动机&lt;/h1&gt;
 
 &lt;p&gt;为了防止自己迷失在一天天琐碎的小事中而没有积累，因此打算写日记记录自己每天的安排，定期回顾整理，希望这么坚持一段时间以后，能量变引起质变。&lt;/p&gt;
 
@@ -98,7 +250,10 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 
 &lt;ol&gt;
   &lt;li&gt;在虚拟机中配置jupyter notebook环境并在win中访问&lt;/li&gt;
+  &lt;li&gt;略读numpy文档并做笔记&lt;/li&gt;
+  &lt;li&gt;研读研究生手册，并做笔记&lt;/li&gt;
 &lt;/ol&gt;
+
 </description>
         <pubDate>Tue, 24 Jul 2018 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2018/07/24/agenda/</link>
