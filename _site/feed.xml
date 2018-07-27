@@ -5,81 +5,100 @@
     <description>记录学习的日常~</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 26 Jul 2018 22:13:19 +0800</pubDate>
-    <lastBuildDate>Thu, 26 Jul 2018 22:13:19 +0800</lastBuildDate>
+    <pubDate>Fri, 27 Jul 2018 13:13:34 +0800</pubDate>
+    <lastBuildDate>Fri, 27 Jul 2018 13:13:34 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
         <title>访问虚拟机中的jupyter notebook</title>
         <description>&lt;h1 id=&quot;配置ssh连接虚拟机&quot;&gt;配置ssh连接虚拟机&lt;/h1&gt;
 
-&lt;h3 id=&quot;确定虚拟机ubuntu的ip地址&quot;&gt;确定虚拟机Ubuntu的IP地址&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;确定虚拟机Ubuntu的IP地址&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig #例如：查看 inet addr:192.168.0.129
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ifconfig #例如：查看 inet addr:192.168.0.129
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;确定windows能否与虚拟机联通&lt;/p&gt;
 
-&lt;h3 id=&quot;确定windows能否与虚拟机联通&quot;&gt;确定windows能否与虚拟机联通&lt;/h3&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;windows下，cmd --&amp;gt;:ping 192.168.0.128
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装ssh服务&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;windows下，cmd --&amp;gt;:ping 192.168.0.128
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;查看ssh服务是否安装&lt;/p&gt;
 
-&lt;h3 id=&quot;安装ssh服务&quot;&gt;安装ssh服务&lt;/h3&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh localhost
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;安装ssh服务&lt;/p&gt;
 
-&lt;h4 id=&quot;查看ssh服务是否安装&quot;&gt;查看ssh服务是否安装&lt;/h4&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install openssh-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;输入命令查看状态&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh localhost
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;安装ssh服务-1&quot;&gt;安装ssh服务&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get install openssh-server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;输入命令查看状态&quot;&gt;输入命令查看状态&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo service ssh status 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;配置xshell通过ssh连接虚拟机&quot;&gt;配置xshell,通过ssh连接虚拟机&lt;/h3&gt;
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo service ssh status 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;配置xshell,通过ssh连接虚拟机&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&quot;notebook端口映射&quot;&gt;notebook端口映射&lt;/h1&gt;
 
-&lt;h3 id=&quot;通过anaconda安装notebook&quot;&gt;通过anaconda安装notebook&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;通过anaconda安装notebook&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;自动生成配置文件&lt;/p&gt;
 
-&lt;h3 id=&quot;自动生成配置文件&quot;&gt;自动生成配置文件&lt;/h3&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jupyter notebook --generate-config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;生成密码&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jupyter notebook --generate-config
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;生成密码&quot;&gt;生成密码&lt;/h3&gt;
-
-&lt;p&gt;在python中运行下面代码，会产生一串密钥&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from notebook.auth import passwd
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from notebook.auth import passwd
 passwd()
 Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;修改配置文件&lt;/p&gt;
 
-&lt;h3 id=&quot;修改配置文件&quot;&gt;修改配置文件&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;c.NotebookApp.ip='*'
-c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'  #注意引号前面的u
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;c.NotebookApp.ip='*'
+c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'     #注意引号前面的u
 c.NotebookApp.open_browser = False
-c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+c.NotebookApp.port =8888 							#可自行指定一个端口, 访问时使用该端口
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;通过xshell实现端口映射&lt;/p&gt;
 
-&lt;h3 id=&quot;通过xshell实现端口映射&quot;&gt;通过xshell实现端口映射&lt;/h3&gt;
-
-&lt;p&gt;连接》SSH》隧道》添加TCP/IP转移规则
+    &lt;p&gt;连接&amp;gt;SSH&amp;gt;隧道&amp;gt;添加TCP/IP转移规则
 源主机就填localhost，侦听端口就填宿主机中的端口，&lt;/p&gt;
 
-&lt;p&gt;目标主机和端口就填虚拟机的ip和notebook运行的端口&lt;/p&gt;
+    &lt;p&gt;目标主机和端口就填虚拟机的ip和notebook运行的端口。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 </description>
         <pubDate>Thu, 26 Jul 2018 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2018/07/26/work-env/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/07/26/work-env/</guid>
+        <link>http://localhost:4000/2018/07/26/remote-jupyter-notebook/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/26/remote-jupyter-notebook/</guid>
         
         <category>日常琐事</category>
         
@@ -239,6 +258,278 @@ np.vsplit(a,3)				#将a按行分为3个相同的子数组(vertically == row-wise
       </item>
     
       <item>
+        <title>研究生手册阅读笔记</title>
+        <description>&lt;h1 id=&quot;动机&quot;&gt;动机&lt;/h1&gt;
+
+&lt;p&gt;之前在找怎么读论文的资料的时候，我发现了台湾清华一个教授的研究生手册，它介绍了一个真正的研究生应该具备什么样的能力，要怎么去了解一个领域内的知识，如何写一篇合格的论文。我读了以后觉得很有收获，因此将核心部分摘抄出来，方便以后反复研读。&lt;/p&gt;
+
+&lt;h1 id=&quot;要点摘抄&quot;&gt;要点摘抄&lt;/h1&gt;
+
+&lt;h2 id=&quot;论文要求篇&quot;&gt;论文要求篇&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;论文的主要内容，是叙述一套&lt;strong&gt;方法&lt;/strong&gt;在一个特定&lt;strong&gt;场合&lt;/strong&gt;中的应用。&lt;/li&gt;
+  &lt;li&gt;这套方法必须要有所&lt;strong&gt;创新或突破&lt;/strong&gt;，并因而&lt;strong&gt;对学术界有所贡献&lt;/strong&gt;。因此，它或者是解决既有问题的&lt;strong&gt;新方法&lt;/strong&gt;，或者是既有方法的&lt;strong&gt;新应用&lt;/strong&gt;，或者是以一个新的方法开启一整片新的应用领域。&lt;/li&gt;
+  &lt;li&gt;在论文中，你必须要有能力提出&lt;strong&gt;足够的证据&lt;/strong&gt;来让读者信服：针对这个应用场合，你所提出来的方法确实有比文献中一切既有方法更优越之处。&lt;/li&gt;
+  &lt;li&gt;此外，你必须要能清楚指出这个方法&lt;strong&gt;在应用上的限制&lt;/strong&gt;，并且提出充分证据来说服读者：任何应用场合，只要能 够满足你所提出来的&lt;strong&gt;假设（前提）条件&lt;/strong&gt;，你的方法就一定适用，而且你所描述的优点就一定会存在。&lt;/li&gt;
+  &lt;li&gt;行文风格上，它是一篇论证严谨，逻辑关系清晰，而且结构有条理的专业论述。也就是说，在叙述你的方法的过程，你必须要&lt;strong&gt;清清楚楚地交代这个方法的应用程序以及所有仿真或实验结果的过程&lt;/strong&gt;，使得这个专业领域内的任何读者，都有办法根据你的描述，在他的实验室下复制出你的研究成果，以便确定你的结 论确实是可以&lt;strong&gt;「在任何时间、任何地点、任何人」都具有可重复性&lt;/strong&gt;（可重复性是「科学」的 根本要求）。&lt;/li&gt;
+  &lt;li&gt;而且，你对这个方法的&lt;strong&gt;每一个步骤都必须要提供充分的理由&lt;/strong&gt;说明「为什么非如此不可」。&lt;/li&gt;
+  &lt;li&gt;最后，你的论文必须要在适当位置清楚注明所有和你所研究之题目相关的文献。而且，你必须要记得：只要是和你所研究的问题相关的学术文献（尤其是学术期刊论文），你都有必要全部找出来（如果漏掉就是你的过失），仔细读过。假如你在学位论文口 试时，有口试委员指出&lt;strong&gt;有一篇既有文献，在你所讨论的问题中处理得比你的方法还好&lt;/strong&gt;，这就构成你&lt;strong&gt;论文无法及格的充分理由&lt;/strong&gt;。&lt;/li&gt;
+  &lt;li&gt;第（2）款所谓「对学术界的贡献」，指的是：把你的所有研究成果扣除掉学术界已经发表过的所有成果（不管你实际上有没有参考过，没有参考过也算是你的重大过失），剩下的就是你的贡献。&lt;strong&gt;假如这个贡献太少，也构成你论文无 法及格的充分理由&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;评价一篇硕士论文的质量&lt;/strong&gt;，主要是看第（2）款所谓&lt;strong&gt;「对学术界的贡献」的多寡与重要性&lt;/strong&gt;而定。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;能力篇&quot;&gt;能力篇&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;数据检索的能力&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;在给定（或自己拟定）的题目范围内，你必须有能力利用数据检索系统查出所有相关的论文，而无任何遗漏。&lt;/p&gt;
+
+    &lt;p&gt;你到底要用什么样的&lt;strong&gt;关键词&lt;/strong&gt;和&lt;strong&gt;查询程序&lt;/strong&gt;去保证你已经找出所有相关的文献？这是第一个大的挑战。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;资料筛选的能力&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;即使你使用了恰当的搜寻策略，通常找到的文献集合都还是明显地比你所需要的集合大。&lt;/p&gt;
+
+    &lt;p&gt;你如何可以只读论文的&lt;strong&gt;题目、摘要、简介和结论&lt;/strong&gt;，而还没有完全看懂全文，就准确地判断出这篇论文中是否有&lt;strong&gt;值得你进一步参考的内容&lt;/strong&gt;，以便快速地把需要仔细读完的论文从数百篇降低到二三十篇？&lt;/p&gt;
+
+    &lt;p&gt;这考验着你资料筛选的能力。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;期刊论文的阅读能力&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;期刊论文和大学部的课本截然不同。&lt;/p&gt;
+
+    &lt;p&gt;大学的课本是&lt;strong&gt;循序渐进&lt;/strong&gt;地从最基本的知识背景逐步交代出整套&lt;strong&gt;有系统的知识&lt;/strong&gt;，中间没有任何的跳跃，只要你逐页读下去，就可以整本都读懂，不需要在去别的地方找参考数据。&lt;/p&gt;
+
+    &lt;p&gt;期刊论文是&lt;strong&gt;没头没尾的十几页文献&lt;/strong&gt;，只交代&lt;strong&gt;最核心的创意&lt;/strong&gt;，并&lt;strong&gt;援引许多其它论文的研究成果&lt;/strong&gt;（但只注明文献出处，而 完全没有交代其内容）。因此，要读懂一篇论文，一定要同时读懂数篇或十数篇被援引的其它论文。偏偏，这十几篇被援引的论文又各自援引十数篇其它论文。&lt;/p&gt;
+
+    &lt;p&gt;因此，相对于大学部的教科书而言，期刊论文是一个极端没有系统的知识，必须要靠读者自己从几十篇论文中&lt;strong&gt;撷取出相关的片段，自己组织成一个有系统的知识，然后才有办法开始阅读与吸收&lt;/strong&gt;。要培养出这 种自己组织知识的能力，需要在学校靠着大量而持续的时间去摸索、体会，而不可能只利用业余的零星时间去培养。&lt;/p&gt;
+
+    &lt;p&gt;硕士毕业生和大学毕业生&lt;strong&gt;最大的差别&lt;/strong&gt;，就是：学士只学习过&lt;strong&gt;吸收系统知识&lt;/strong&gt;的能力（也就是读别人整理、组织好的知识，典型的就是课本）；但硕士则学习过自己&lt;strong&gt;从无组织的知识中检索、筛选、组织知识&lt;/strong&gt;的能力。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;期刊论文的分析能力&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;为了确定你的学位论文研究成果确实比所有相关的学术期刊论文都&lt;strong&gt;更适合处理你所拟定的应用场域&lt;/strong&gt;，&lt;/p&gt;
+
+    &lt;p&gt;首先你必须要有能力&lt;strong&gt;逐篇分析&lt;/strong&gt;出所有相关期刊论文的&lt;strong&gt;优点与缺点&lt;/strong&gt;，以及自己的研究成果的优点与缺点，&lt;/p&gt;
+
+    &lt;p&gt;然后再拿他们来做&lt;strong&gt;比较&lt;/strong&gt;，总结出你的论文的优点和缺点（限制）。&lt;/p&gt;
+
+    &lt;p&gt;硕士生则必须要有「对一切既有进行&lt;strong&gt;精确批判&lt;/strong&gt;」的能力。但是，这个批判并非个人好恶或情绪化的批判，而是真的找得到&lt;strong&gt;充分理由去支持的批判&lt;/strong&gt;。这个批判的能力，让你有能力自己找到自己的优、缺点，因 此也有机会自己精益求精。&lt;/p&gt;
+
+    &lt;p&gt;一个严格训练过的合格硕士， 他做事的时候应该是&lt;strong&gt;不需要有人在背后替他做检证&lt;/strong&gt;，他自己就应该要有能力分析自己的优、缺点，主动向上级或平行单位要求支持。至少要能够完成这个能力，才勉强可以说你 是有「&lt;strong&gt;独立自主的判断能力&lt;/strong&gt;」。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;创新的能力&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;大学毕业生的主要能力是&lt;strong&gt;吸收既有知识&lt;/strong&gt;，但硕士毕业生却应该要有能力&lt;strong&gt;创造知识&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;p&gt;台湾的产品之所以无法有稳定的质量，背后的技术原因就是：各种创新都是只凭&lt;strong&gt;一时偶然&lt;/strong&gt;的巧思，却没有办法进一步有系统地厘清这些巧思背后可以成立的条件。但是，&lt;strong&gt;创新其实是可以有一套「有迹可寻」的程序。&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;论文阅读与分析篇&quot;&gt;论文阅读与分析篇&lt;/h2&gt;
+
+&lt;h3 id=&quot;意义&quot;&gt;意义&lt;/h3&gt;
+
+&lt;p&gt;只要深入掌握到阅读与分析期刊论文的技巧，就可以掌握到大学生不 曾研习过的三种能力：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;自己从无组织的知识中&lt;strong&gt;检索、筛选、组织知识&lt;/strong&gt;的能力&lt;/li&gt;
+  &lt;li&gt;对一 切既有进行精确批判的&lt;strong&gt;独立自主判断&lt;/strong&gt;能力&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;创造新知识&lt;/strong&gt;的能力。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;技术的创新并不是全靠聪明。我熟谙一套&lt;strong&gt;技术创新的方法&lt;/strong&gt;，只要学会分析期刊论文的优缺点，就可拿这套方法分析&lt;strong&gt;竞争对手产品的优缺点&lt;/strong&gt;；而且，只要再稍微加工，就可以从这套优缺点的清单里找到&lt;strong&gt;突破瓶颈所需的关键性创意&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;这套创新程序，可以把「创新」变 成不需要太多天分便可以完成的事，从而&lt;strong&gt;减轻创意的不定性与风险性&lt;/strong&gt;。因此，只要会&lt;strong&gt;分析论文&lt;/strong&gt;，几乎就可以&lt;strong&gt;轻易地组合出&lt;/strong&gt;你所需要的绝大部分创意。聪明是不可能教的，但这套技巧却是可以教的；而且只要用心，绝大部分硕士生都可以学会。&lt;/p&gt;
+
+&lt;h3 id=&quot;论文分析的技巧&quot;&gt;论文分析的技巧&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Abstract&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;说明这篇论文的&lt;strong&gt;主要贡献、方法特色与主要内容&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;p&gt;最慢硕二上学期必须要学会只看Abstract 和 Introduction 便可以判断出这篇论文的重点和你的研究有没有直接关连，从而决定要不要把它给读完。&lt;/p&gt;
+
+    &lt;p&gt;假如你有能力每三十篇论文&lt;strong&gt;只根据摘要和简介&lt;/strong&gt;便能筛选出其中&lt;strong&gt;最密切相关&lt;/strong&gt;的五篇论文，你就比别人的效率高五倍以上。以后不管是做事或做学术研究，都比别人有能力从更广泛的文献中挑出&lt;strong&gt;最值得参考&lt;/strong&gt;的资料。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;介绍问题的&lt;strong&gt;背景和起源&lt;/strong&gt;，交代前人在这个题目上&lt;strong&gt;已经有过的主要贡献&lt;/strong&gt;，说清楚前人留下来的&lt;strong&gt;未解问题&lt;/strong&gt;，以及在这个背景下这篇论文的&lt;strong&gt;想解决的问题和它的重要性&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;p&gt;对初学的学生而言，从这里可以了解以前研究的概况。通常我会建议初学的学生，对你的题目不熟时，先把跟你题目可能相关的论文收集个 30～40 篇，每篇都只读 Abstract 和 Introduction，而不要读 Main Body（本文），只在必要时稍微参考一下后面的 Illustrative examples 和 Conclusions，直到你能回答下面这三个问题：&lt;/p&gt;
+
+    &lt;p&gt;（2A） 在这领域内最常被引述的方法有哪些？&lt;/p&gt;
+
+    &lt;p&gt;（2B） 这些方法可以分成哪些主要派别？&lt;/p&gt;
+
+    &lt;p&gt;（3C） 每个派别的主要特色（含优点和缺点）是什么？&lt;/p&gt;
+
+    &lt;h5 id=&quot;寻找论文&quot;&gt;寻找论文&lt;/h5&gt;
+
+    &lt;p&gt;问题是，你&lt;strong&gt;怎么去找到&lt;/strong&gt;这最初的 30～40 篇论文？有一种期刊论文叫做「&lt;strong&gt;review paper&lt;/strong&gt;」，专门在一个题目下面整理出所有相关的论文，并且做简单的回顾。你可以在搜寻 Compendex 时在 &lt;strong&gt;keywords 中加一个「review」&lt;/strong&gt;而筛选出这类论文。然后从相关的数篇 review paper 开 始，从中根据 title 与 Abstract 找出你认为&lt;strong&gt;跟你研究题目较相关&lt;/strong&gt;的 30～40 篇论文。&lt;/p&gt;
+
+    &lt;h5 id=&quot;略读摘要和介绍&quot;&gt;略读摘要和介绍&lt;/h5&gt;
+
+    &lt;p&gt;通常只要你&lt;strong&gt;反复读过&lt;/strong&gt;该领域内 30～40 篇论文的 Abstract 和 Introduction，你就应该可以从 Introduction 的评论中&lt;strong&gt;回答（2A）和（2B）这两个问题&lt;/strong&gt;。尤其要记得，当你阅读的目的是要回答（2A）和（2B）这两个问题时，你一定要先挑那些 &lt;strong&gt;Introduction 写得比较有观念&lt;/strong&gt;的论文念（很多论文的 Introduction 写得像流水帐，没有观念，这种论文刚开始时不要去读它）。假如你读过假如 30～40 篇论文的 Abstract 和 Introduction 之后，&lt;strong&gt;还是回答不了（2C）， 先做下述的工作。&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;h5 id=&quot;整理论文&quot;&gt;整理论文&lt;/h5&gt;
+
+    &lt;p&gt;你先根据（2A）的答案，把这领域内&lt;strong&gt;最常被引述的论文&lt;/strong&gt;找齐，再把他们根据（2B）的答案分成派别，每个派别&lt;strong&gt;按日期先后次序排好&lt;/strong&gt;。然后，你&lt;strong&gt;每次只重新读一派&lt;/strong&gt;的 Abstract 和Introduction（必要时简略参考内文，但目的只是读懂 Introduction 内与这派有关的陈述，而不需要真的看懂所有内文），照日期先后读，读的时候只企图回答一个问题：&lt;strong&gt;这一派的创意与主要诉求是什么？&lt;/strong&gt;这样，你逐派逐派地把每一派的 Abstract 和 Introduction 给读完，总结出这一派&lt;strong&gt;主要的诉求、方法特色和优点&lt;/strong&gt;（每一篇论文都会说出自己的优点，仔细读就不会漏掉）。&lt;/p&gt;
+
+    &lt;p&gt;其次，你再把这些论文拿出来，但是&lt;strong&gt;只读 Introduction&lt;/strong&gt;，认真回答下述问题：「&lt;strong&gt;每篇论文对其它派别有什么批评？&lt;/strong&gt;」然后你把读到的重点逐一记录到各派别的「缺点」栏内。&lt;/p&gt;
+
+    &lt;p&gt;通过以上程序，你就应该可以掌握到（2A）、（2B）、和（2C）三个问题的答案。这时你对该领域内主要方法、文献之间的关系算是&lt;strong&gt;相当熟捻&lt;/strong&gt;了，但是你还是只仔细读完 Abstract 和 Introduction 而已，内文则只是笼统读过。&lt;/p&gt;
+
+    &lt;h5 id=&quot;补齐论文并做总结&quot;&gt;补齐论文并做总结&lt;/h5&gt;
+
+    &lt;p&gt;这时候，你已经掌握到这领域主要的论文，你可以用这些论文测试看看你用来搜寻这领域论文的 keywords 到底恰不恰当，并且&lt;strong&gt;用修正过的 keywords 再搜寻一次论文&lt;/strong&gt;，把这领域的&lt;strong&gt;主要文献补齐&lt;/strong&gt;，也把原来 30～40 篇论文中后来发现关系较远的论文给筛选掉，只保留大概20篇左右确定跟你关系较近的文献。如果有把握，可以甚至删除一两个你不想用的派别（要有充分的理由），只保留两、三个派别（也要有充分的理由）继续做完以下工作。&lt;/p&gt;
+
+    &lt;p&gt;然后你应该利用（2C）的答案，再进一步回答一个问题（2D）：「这个领域内大家认为重要的&lt;strong&gt;关键问题&lt;/strong&gt;有哪些？有哪些特性是大家&lt;strong&gt;重视的优点&lt;/strong&gt;？有哪些特性是大家&lt;strong&gt;在意的缺点&lt;/strong&gt;？ 这些优点与缺点通常在&lt;strong&gt;哪些应用场合&lt;/strong&gt;时会比较被重视？在哪些应用场合时比较不会被重视？」然后，你就可以整理出&lt;strong&gt;这个领域（研究题目）主要的应用场合&lt;/strong&gt;，以及这些应用场合上&lt;strong&gt;该注意的事项&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;h5 id=&quot;读论文正文的预备工作&quot;&gt;读论文正文的预备工作&lt;/h5&gt;
+
+    &lt;p&gt;最后，在你真正开始念论文的 main body 之前，你应该要先根据（2A）和2B）的答案，&lt;strong&gt;把各派别内的论文整理在同一个档案夹里，并照时间先后次序排好&lt;/strong&gt;。然后依照这些派别与你的研究方向的关系远近，一个派别一个派别地逐一把各派一次念完一派的main bodies。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Main body&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;在你&lt;strong&gt;第一次&lt;/strong&gt;有系统地念某派别的论文 main bodies 时，你只需要念懂：&lt;/p&gt;
+
+    &lt;h5 id=&quot;流派整理&quot;&gt;流派整理&lt;/h5&gt;
+
+    &lt;p&gt;（3A）这篇论文的&lt;strong&gt;主要假设是什么&lt;/strong&gt;（在什么条件下它是有效的），并且评估一下这些假设在现实条件下有多 容易（或多难）成立。愈难成立的假设，愈不好用，参考价值也愈低。&lt;/p&gt;
+
+    &lt;p&gt;（3B）&lt;strong&gt;在这些假设下， 这篇论文主要有什么好处&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;p&gt;（3C）&lt;strong&gt;这些好处主要表现在哪些公式的哪些项目的简化上&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;p&gt;至于 整篇论文详细的推导过程，你不需要懂。除了三、五个关键的公式（&lt;strong&gt;最后在应用上要使用的公式&lt;/strong&gt;，你可以从这里评估出这个方法使用上的方便程度或计算效率，以及在非理想情境下这些公式使用起来的可靠度或稳定性）之外，其它公式都不懂也没关系，公式之间的恒等式推导过程可以完全略过去。&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;假如你要看公式&lt;/strong&gt;，&lt;strong&gt;重点&lt;/strong&gt;是看公式推导过程中&lt;strong&gt;引入的假设条件&lt;/strong&gt;，而&lt;strong&gt;不是恒等式的转换&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;p&gt;但是，在你开始根据前述问题念论文之前，你应该先把这派别所有的论文都拿出来，&lt;strong&gt;逐篇粗略地浏览&lt;/strong&gt;过去（不要勉强自己每篇或每行都弄到懂，而是&lt;strong&gt;轻松地读，能懂就懂，不懂就不懂&lt;/strong&gt;），从中挑出&lt;strong&gt;容易念懂&lt;/strong&gt;的 papers，以及&lt;strong&gt;经常被引述&lt;/strong&gt;的论文。然后把这些论文照时间先后次序依序念下去。记得：你念的时候只要回答（3A）、（3B）、（3C）三个问题就好，不要念太细。&lt;/p&gt;
+
+    &lt;p&gt;这样念完以后，你应该把这一派的&lt;strong&gt;主要发展过程&lt;/strong&gt;，&lt;strong&gt;主要假设&lt;/strong&gt;、&lt;strong&gt;主要理论依据&lt;/strong&gt;、以及&lt;strong&gt;主要的成果&lt;/strong&gt;做一个完整的整理。其次，你还要在根据（2D）的答案以及这一派的主要假设，进 一步回答下一个问题：（3D）这一派&lt;strong&gt;主要的缺点&lt;/strong&gt;有哪些。最后，根据（3A）、（3B）、（3C）、 （3D）的答案综合整理出：&lt;strong&gt;这一派最适合什么时候使用，最不适合什么场合使用。&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;h5 id=&quot;识破论文老手的trick&quot;&gt;识破论文老手的trick&lt;/h5&gt;
+
+    &lt;p&gt;当你是生手的时候，你要评估一个方法的优缺点时，往往必须要参考它的 Examples。&lt;/p&gt;
+
+    &lt;p&gt;但是，要记得：老练的论文写作高手会故意只 present 成功的案例而遮掩失败的案例。所以， simulation examples and/or experiments 很棒不一定表示这方法真的很好。&lt;/p&gt;
+
+    &lt;p&gt;你必须要回到这个 方法的基本假设上去，以及他在应用时所使用的主要公式（resultant equations）去，凭自己 的思考能力， 并且参考（2C）和（2D）的答案，自己问问看：&lt;/p&gt;
+
+    &lt;p&gt;当某某假设在某些实用场合 上无法成立时，这个方法会不会出什么状况？猜一猜，预测一下这个方法应该会在哪些条件 下（应用场合）表现优异，又会在哪些条件下（应用场合）出状况？&lt;/p&gt;
+
+    &lt;p&gt;根据这个猜测再检验一次simulation examples and/or experiments，看它的长处与短处是不是确实在这些 examples中充分被检验，且充分表现出来。&lt;/p&gt;
+
+    &lt;h5 id=&quot;筛选信息的重要性&quot;&gt;筛选信息的重要性&lt;/h5&gt;
+
+    &lt;p&gt;那么，你什么时候才需要弄懂一篇论文&lt;strong&gt;所有的恒等式推导过程&lt;/strong&gt;，或者&lt;strong&gt;把整篇论文细细读完&lt;/strong&gt;？&lt;strong&gt;NEVER！&lt;/strong&gt;你只需要把&lt;strong&gt;确定会用到的部分&lt;/strong&gt;给完全搞懂就好，不确定会不会用到的部分， 只需要&lt;strong&gt;了解它主要的点子&lt;/strong&gt;就够了。
+硕士生和大学生&lt;strong&gt;最主要的差别&lt;/strong&gt;：大学生读什么都必须要从头到尾都懂，硕士生只需要懂他用得着的部分就好了！大学生因为面对的知识是有固定的范围，所以他那样念。&lt;strong&gt;硕士生面对的知识是没有范围的，因此他只需要懂他所需要的细腻度就够&lt;/strong&gt;了。硕士生必须学会&lt;strong&gt;选择性的阅读&lt;/strong&gt;，而且必须锻炼出他&lt;strong&gt;选择时的准确度以及选择的速度&lt;/strong&gt;，不要浪费时间在学用不着的细节知识！&lt;strong&gt;多吸收「点子」比较重要，而不是细部的知识&lt;/strong&gt;。&lt;/p&gt;
+
+    &lt;h5 id=&quot;补充说明&quot;&gt;补充说明&lt;/h5&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;不必强求逐行读懂&lt;/p&gt;
+
+        &lt;p&gt;每次读论文都 一定要&lt;strong&gt;带着问题&lt;/strong&gt;去读，每次读的时候都只是图回答你要回答的问题。因此，一定是选择性地阅读，一定要&lt;strong&gt;逐渐由粗而细地一层一层去了解&lt;/strong&gt;。上面所规划的读论文的次序，就是由粗而细， 每读完一轮，你对这问题的知识就增加一层。根据这一层知识就可以问出下一层更细致的问 题，再根据这些更细致的问题去重读，就可以理解到更多的内容。因此，一定是&lt;strong&gt;一整批一起读懂到某个层次&lt;/strong&gt;，而不是逐篇逐篇地整篇一次读懂。&lt;/p&gt;
+
+        &lt;p&gt;整批读略过一次之后，就可以&lt;strong&gt;规划出一个你以为比较容易懂的阅读次序&lt;/strong&gt;，而不要硬碰硬地在那里撞墙壁。整批阅读很像在玩跳棋，你要去规划出你自己阅读时的「最省力路径」。&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;发挥自己的想象&lt;/p&gt;
+
+        &lt;p&gt;要敢于想象和猜测。&lt;/p&gt;
+
+        &lt;p&gt;猜完一后要根据你的猜测在论文里找证据，用以判断你的猜测对不对。&lt;/p&gt;
+
+        &lt;p&gt;猜对了，就用你的猜测（其实是你的推理架构）去吸收作者的信息与创意（这会比从头硬生生地去迁就作者的思路轻松而容易）；&lt;/p&gt;
+
+        &lt;p&gt;猜错了，论文理会有一些信息告诉你说 你错了，而且因为猜错所以你读到对的答案时反而印象更深刻。&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;论文阅读流程图&quot;&gt;论文阅读流程图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://chenjunbo-image.oss-cn-beijing.aliyuncs.com/18-7-27/29150003.jpg&quot; alt=&quot;论文阅读流程&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;方法与应用场合特性表&quot;&gt;方法与应用场合特性表&lt;/h3&gt;
+
+&lt;h5 id=&quot;总结论文并制表&quot;&gt;总结论文并制表&lt;/h5&gt;
+
+&lt;p&gt;试着想象说你从上图中论文阅读步骤的第（4）与（5）步骤分别获得以下两张表：
+&lt;img src=&quot;http://chenjunbo-image.oss-cn-beijing.aliyuncs.com/18-7-27/82288858.jpg&quot; alt=&quot;方法与应用场合特性&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;那么，四个方法中哪个方法最好？你可能会回答说：「方法二！因为它的优点最多，缺点最少。」但是，这样的回答是错的！&lt;strong&gt;方法没有好坏，只有相对优缺点&lt;/strong&gt;；只有当方法的特性与应用场合的特性不合时，才能下结论说这方法「不适用」；二当当方法的特性与应用场合的特性吻合时， 则下结论说这方法「很适用」。因此，一定要同时有&lt;strong&gt;方法特性表&lt;/strong&gt;与&lt;strong&gt;应用场合特性分析表&lt;/strong&gt;放在一起后，才能判断一个方法的适用性。&lt;/p&gt;
+
+&lt;h5 id=&quot;利用表格指导创新&quot;&gt;利用表格指导创新&lt;/h5&gt;
+
+&lt;p&gt;更重要的是：上面的方法与问题分析对照表还可以用来&lt;strong&gt;把「突破瓶颈所需的创意」简化成一种「有迹可寻」的工作&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;假定我们要针对应用甲发展一套适用的方法，首先 我们要先从上右表中标定&lt;strong&gt;这个应用场合关心哪些问题特性&lt;/strong&gt;。根据上右表第一个 column，甲应用场合只关心四个特性：特性 1、2、3、5（即「计算速度」、「光源亮度不稳定时计算位置的误差大小」、「噪声对计算出的位置的干扰」、「对象有彼此的遮蔽时方法的适用性」）。&lt;/p&gt;
+
+&lt;p&gt;那么，哪个方法最适用呢？看起来是方法一，它除了特性2表现普通之外，其它三个特性的表现都很出色。&lt;/p&gt;
+
+&lt;p&gt;但是，假如我们对方法一的表现仍不够满意，&lt;strong&gt;怎么去改善它&lt;/strong&gt;？最简单的办法就是从上左表&lt;strong&gt;找现成的方法和方法一结合&lt;/strong&gt;，产生出一个更适用的方法。&lt;/p&gt;
+
+&lt;p&gt;因为方法一只有在特性 2上面表现不够令人满意，所以我们就&lt;strong&gt;优先针对在特性2上面表现出色的其它方法加以研究&lt;/strong&gt;。 根据上左表，在特性 2 上面表现出色的方法有方法二和方法四，所以我们就去研究这两个方 法和方法一结合的可能性。或许（随便举例）&lt;strong&gt;方法四的创意&lt;/strong&gt;刚好可以被&lt;strong&gt;结合进方法一&lt;/strong&gt;而改善方法一在特性 2 上面的表现，那么，我们就可以因此轻易地获得一个方法一的改良，从而突破甲应用场合没有适用方法的瓶颈。&lt;/p&gt;
+
+&lt;p&gt;有没有可能说单纯常识结合既有方法优点仍无法突破技术瓶颈的状况？可能有。这时候真的需要&lt;strong&gt;完全新颖的创意&lt;/strong&gt;了。但是，这种时候很罕见。多半时候只要应用上一段的分析技巧就可以产生足以解决实用问题的创意了。至少，要产生出一篇学术期刊论文并非那么困难。&lt;/p&gt;
+
+&lt;h2 id=&quot;论文报告篇&quot;&gt;论文报告篇&lt;/h2&gt;
+
+&lt;p&gt;报告一篇论文，要求做到以下部分（依报告次序排列）：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;投影片第一页必须列出论文的题目、作者、论文出处与年份。&lt;/li&gt;
+  &lt;li&gt;以下每一页投影片&lt;strong&gt;只能讲一个观念&lt;/strong&gt;，不可以在一张投影片里讲两个观念。&lt;/li&gt;
+  &lt;li&gt;说明这篇论文所研究的&lt;strong&gt;问题的重点&lt;/strong&gt;，以及这个问题可能和工业界的&lt;strong&gt;哪些应用&lt;/strong&gt;相关。&lt;/li&gt;
+  &lt;li&gt;清楚交代这篇论文的&lt;strong&gt;主要假设&lt;/strong&gt;，&lt;strong&gt;主要公式&lt;/strong&gt;，与&lt;strong&gt;主要应用方式&lt;/strong&gt;（以及应用上可能的解题流程）&lt;/li&gt;
+  &lt;li&gt;说明这篇论文的范例（&lt;strong&gt;simulation examples and/or experiments&lt;/strong&gt;），&lt;strong&gt;预测&lt;/strong&gt;这个方法在不同场合时可能会有的&lt;strong&gt;准确度或好用的程度&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;你个人的分析、评价与批评
+    &lt;ol&gt;
+      &lt;li&gt;这篇论文&lt;strong&gt;最主要的创意&lt;/strong&gt;是什么？&lt;/li&gt;
+      &lt;li&gt;这些创意&lt;strong&gt;在应用上有什么好处&lt;/strong&gt;？&lt;/li&gt;
+      &lt;li&gt;这些创意和应用上的好处是&lt;strong&gt;在哪些条件下&lt;/strong&gt;才能成立？&lt;/li&gt;
+      &lt;li&gt;这篇论文&lt;strong&gt;最主要的缺点或局限&lt;/strong&gt;是什么？&lt;/li&gt;
+      &lt;li&gt;这些缺点或局限&lt;strong&gt;在应用上有什么坏处&lt;/strong&gt;？&lt;/li&gt;
+      &lt;li&gt;这些缺点和应用上的坏处是&lt;strong&gt;因为哪些因素而引入&lt;/strong&gt;的？&lt;/li&gt;
+      &lt;li&gt;你建议学长学弟&lt;strong&gt;什么时候参考这篇论文的哪些部分（点子）&lt;/strong&gt;？&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;注意：&lt;/strong&gt;读论文和报告论文时，最重要的是它的&lt;strong&gt;创意和观念架构&lt;/strong&gt;，而不是数学上恒等式推导过程的细节（顶多只要抓出关键的 equation 弄懂以及说明清楚即可）。你&lt;strong&gt;报告观念与分析创意&lt;/strong&gt;，别人&lt;strong&gt;容易听懂又觉得有趣&lt;/strong&gt;；你讲&lt;strong&gt;恒等式&lt;/strong&gt;，大家&lt;strong&gt;不耐烦又浪费时间&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 26 Jul 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/26/master-intro/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/26/master-intro/</guid>
+        
+        <category>日常琐事</category>
+        
+        
+      </item>
+    
+      <item>
         <title>学习记录</title>
         <description>&lt;h1 id=&quot;动机&quot;&gt;动机&lt;/h1&gt;
 
@@ -251,7 +542,15 @@ np.vsplit(a,3)				#将a按行分为3个相同的子数组(vertically == row-wise
 &lt;ol&gt;
   &lt;li&gt;在虚拟机中配置jupyter notebook环境并在win中访问&lt;/li&gt;
   &lt;li&gt;略读numpy文档并做笔记&lt;/li&gt;
-  &lt;li&gt;研读研究生手册，并做笔记&lt;/li&gt;
+  &lt;li&gt;研读研究生手册论文要求篇和能力篇，并做笔记&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;7-27&quot;&gt;7-27&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;研读研究生手册论文阅读与分析篇和报告篇，并做笔记&lt;/li&gt;
+  &lt;li&gt;研读就业工作总结，并做笔记&lt;/li&gt;
+  &lt;li&gt;略读pandas文档并做笔记&lt;/li&gt;
 &lt;/ol&gt;
 
 </description>

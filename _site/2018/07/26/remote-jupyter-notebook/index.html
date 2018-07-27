@@ -10,7 +10,7 @@
 
     <title>访问虚拟机中的jupyter notebook - Piece of Mind</title>
 
-    <link rel="canonical" href="http://localhost:4000/2018/07/26/work-env/">
+    <link rel="canonical" href="http://localhost:4000/2018/07/26/remote-jupyter-notebook/">
 
     <!-- Icons -->
   <link rel="shortcut icon" href="img/favicon.ico">
@@ -93,7 +93,7 @@
     <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/img/facebook.jpg')
+        background-image: url('/img/twitter.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -126,69 +126,88 @@
 
                 <h1 id="配置ssh连接虚拟机">配置ssh连接虚拟机</h1>
 
-<h3 id="确定虚拟机ubuntu的ip地址">确定虚拟机Ubuntu的IP地址</h3>
+<ol>
+  <li>
+    <p>确定虚拟机Ubuntu的IP地址</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifconfig #例如：查看 inet addr:192.168.0.129
-</code></pre></div></div>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifconfig #例如：查看 inet addr:192.168.0.129
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>确定windows能否与虚拟机联通</p>
 
-<h3 id="确定windows能否与虚拟机联通">确定windows能否与虚拟机联通</h3>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>windows下，cmd --&gt;:ping 192.168.0.128
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>安装ssh服务</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>windows下，cmd --&gt;:ping 192.168.0.128
-</code></pre></div></div>
+    <ol>
+      <li>
+        <p>查看ssh服务是否安装</p>
 
-<h3 id="安装ssh服务">安装ssh服务</h3>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh localhost
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>安装ssh服务</p>
 
-<h4 id="查看ssh服务是否安装">查看ssh服务是否安装</h4>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install openssh-server
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>输入命令查看状态</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh localhost
-</code></pre></div></div>
-
-<h4 id="安装ssh服务-1">安装ssh服务</h4>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install openssh-server
-</code></pre></div></div>
-
-<h4 id="输入命令查看状态">输入命令查看状态</h4>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo service ssh status 
-</code></pre></div></div>
-
-<h3 id="配置xshell通过ssh连接虚拟机">配置xshell,通过ssh连接虚拟机</h3>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo service ssh status 
+</code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>配置xshell,通过ssh连接虚拟机</p>
+  </li>
+</ol>
 
 <hr />
 
 <h1 id="notebook端口映射">notebook端口映射</h1>
 
-<h3 id="通过anaconda安装notebook">通过anaconda安装notebook</h3>
+<ol>
+  <li>
+    <p>通过anaconda安装notebook</p>
+  </li>
+  <li>
+    <p>自动生成配置文件</p>
 
-<h3 id="自动生成配置文件">自动生成配置文件</h3>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook --generate-config
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>生成密码</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter notebook --generate-config
-</code></pre></div></div>
-
-<h3 id="生成密码">生成密码</h3>
-
-<p>在python中运行下面代码，会产生一串密钥</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from notebook.auth import passwd
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from notebook.auth import passwd
 passwd()
 Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>修改配置文件</p>
 
-<h3 id="修改配置文件">修改配置文件</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c.NotebookApp.ip='*'
-c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'  #注意引号前面的u
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c.NotebookApp.ip='*'
+c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'     #注意引号前面的u
 c.NotebookApp.open_browser = False
-c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
-</code></pre></div></div>
+c.NotebookApp.port =8888 							#可自行指定一个端口, 访问时使用该端口
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>通过xshell实现端口映射</p>
 
-<h3 id="通过xshell实现端口映射">通过xshell实现端口映射</h3>
-
-<p>连接》SSH》隧道》添加TCP/IP转移规则
+    <p>连接&gt;SSH&gt;隧道&gt;添加TCP/IP转移规则
 源主机就填localhost，侦听端口就填宿主机中的端口，</p>
 
-<p>目标主机和端口就填虚拟机的ip和notebook运行的端口</p>
+    <p>目标主机和端口就填虚拟机的ip和notebook运行的端口。</p>
+  </li>
+</ol>
 
 
                 <hr>
@@ -204,7 +223,7 @@ c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
 
                 <!-- 多说评论框 start -->
                 <div class="comment">
-                    <div class="ds-thread" data-thread-key="/2018/07/26/work-env" data-title="访问虚拟机中的jupyter notebook" data-url="http://localhost:4000/2018/07/26/work-env/"></div>
+                    <div class="ds-thread" data-thread-key="/2018/07/26/remote-jupyter-notebook" data-title="访问虚拟机中的jupyter notebook" data-url="http://localhost:4000/2018/07/26/remote-jupyter-notebook/"></div>
                 </div>
                 <!-- 多说评论框 end -->
             </div>
